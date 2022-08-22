@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-const kickout time.Duration = 10
+const kickout time.Duration = 100000
 
 type Server struct {
 	Ip      string
@@ -69,7 +69,7 @@ func (this *Server) Handler(conn net.Conn) {
 			//因为是多进程，导致这个地方在往server的msg里写消息之后，下一步如果close运行得更快
 			//那么会遍历到UserMap,但是连接已经不存在，程序就崩溃了
 			close(user.C)
-			//宕机原因 使用已经关闭的连接读数据
+			//宕机原因 暂未找到原因
 			conn.Close()
 			//一个连接失效要关闭管道
 			return

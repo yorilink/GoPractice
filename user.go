@@ -91,7 +91,7 @@ func NewUser(conn net.Conn, conserver *Server) *User {
 	return user
 }
 
-// 用户的监听方法
+// ListenuMsg ListenMsg 用户的监听方法
 // 一听到消息就写到用户自己的管道里
 func (this *User) ListenuMsg() {
 	for {
